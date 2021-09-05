@@ -12,7 +12,7 @@
 
 .wrapper {
     position: absolute;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     top: 0;
@@ -80,10 +80,21 @@ select.arrows:focus {
     outline: 0;
 }
 
-.header-center {
-    
+.header-title {
+    font-size: 3.7vh;
+    font-family: def2;
+    color: white;
+    margin-right: 5%;
+    user-select: none;
+}
 
-    background-color: red;
+.exit {
+    font-size: 2.3vh;
+    font-family: def2;
+    color: white;
+    margin-right: 2.5%;
+    cursor: pointer;
+    user-select: none;
 }
 
 .vehicle-container {
@@ -125,6 +136,7 @@ select.arrows:focus {
     border: 0.1vh solid white;
     border-radius: 0.45vh;
     overflow: hidden;
+    user-select: none;
 }
 
 .item-container button {
@@ -168,12 +180,12 @@ select.arrows:focus {
 
 .veh-img span {
     position: absolute;
-    font-size: 0.5vh;
-    font-family: def;
+    font-size: 1.2vh;
+    font-family: def2;
     font-weight: 700;
     color: #f8f8f8;
 
-    padding: 0.35vh 0.8vh;
+    padding: 0.20vh 0.8vh 0.35vh;
     border-radius: 0.20vh;
     margin-bottom: 0.5vh;
     background-color: #e82b44;
@@ -214,9 +226,8 @@ select.arrows:focus {
 .veh-vehs span {
     position: relative;
     margin: 0.75%;
-    font-size: 0.5vh;
-    font-family: def;
-    font-weight: 700;
+    font-size: 1.1vh;
+    font-family: def2;
     color: #f8f8f8;
 
     border-radius: 0.3vh;

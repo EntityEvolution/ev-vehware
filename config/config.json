@@ -6,7 +6,9 @@
         "type": "high",
         "title": "Package 1",
         "description": "You should deliver this to a certain location.",
-        "vehicles" : ["Ford", "BMW", "Fiat"]
+        "vehicles": ["Adder", "Zentorno", "T20"],
+        "vehiclesSpawn": ["Adder", "zentorno", "T20"],
+        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0]
     },
 
     {
@@ -16,7 +18,9 @@
         "type": "low",
         "title": "Package 1",
         "description": "You should deliver this to a certain location.",
-        "vehicles" : ["Ford", "BMW", "Fiat"]
+        "vehicles": ["Adder", "Zentorno", "T20"],
+        "vehiclesSpawn": ["Adder", "zentorno", "T20"],
+        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0]
     },
 
     {
@@ -26,6 +30,8 @@
         "type": "medium",
         "title": "Package 1",
         "description": "You should deliver this to a certain location.",
-        "vehicles" : ["Ford", "BMW", "Fiat"]
+        "vehicles": ["Adder", "Zentorno", "T20"],
+        "vehiclesSpawn": ["Adder", "zentorno", "T20"],
+        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0]
     }
 ]
