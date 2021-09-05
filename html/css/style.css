@@ -1,0 +1,218 @@
+@font-face {
+    font-family: def;
+    src: url(../fonts/VarelaRound-Regular.ttf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: def2;
+    src: url(../fonts/KumbhSans-SemiBold.ttf);
+    font-display: swap;
+}
+
+.wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    position: relative;
+    width: 50%;
+    height: 60%;
+    background-color: #2f3346;
+    border-radius: 0.5vh;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+
+    border-top-right-radius: 0.5vh;
+    border-top-left-radius: 0.5vh;
+    background-color: #0e1e31;
+}
+
+/* Up and down arrows https://stackoverflow.com/questions/52572821/how-to-make-both-up-down-arrow-in-select-input-field-in-css/52600787 */
+select {
+    display: inline-block;
+    position: relative;
+    padding: 0.6vh 4.0vh 0.6vh 1.0vh;
+    margin-left: 7.5%;
+
+    border: none;
+    border-radius: 0.4vh;
+
+    font-family: def;
+    font-size: 1.4vh;
+    line-height: 2.5vh;
+    color: #ffffffd9;
+
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background: rgb(49, 65, 97);
+    transition: 0.1s;
+}
+
+select:hover {
+    transform: scale(1.05);
+}
+
+select.arrows {
+    background-image: url('../img/arrows.png');
+    background-position: calc(100% - .50vh), 100% 0;
+    background-repeat: no-repeat;
+    background-size: 2.5vh;
+}
+
+select.arrows:focus {
+    border-color: blue;
+    outline: 0;
+}
+
+.header-center {
+    
+
+    background-color: red;
+}
+
+.vehicle-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    overflow-x: hidden;
+    width: 100%;
+    height: 85%;
+}
+
+.vehicle-container::-webkit-scrollbar {
+    width: 0.8vh;
+}
+
+.vehicle-container::-webkit-scrollbar-track {
+    background-color: #555;
+    border-radius: 1.6vh;
+}
+
+.vehicle-container::-webkit-scrollbar-thumb {
+    background: rgb(141, 141, 141);
+    border-radius: 1.6vh;
+}
+
+.vehicle-container::-webkit-scrollbar-thumb:hover {
+    background: #a7a7a7;
+}
+
+.item-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2.5%;
+    width: 25%;
+    background-color: #ededed;
+    border: 0.1vh solid white;
+    border-radius: 0.45vh;
+    overflow: hidden;
+}
+
+.item-container button {
+    position: relative;
+    border: none;
+    padding: 0.7vh 3.8vh 0.9vh;
+    margin-top: 2.5%;
+    margin-bottom: 5%;
+    border-radius: 0.3vh;
+
+    font-size: 1.4vh;
+    font-family: def2;
+    color: #272626;
+
+    background-color: #90c43d;
+}
+
+.veh-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 45%;
+}
+
+.veh-img img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.45vh;
+}
+
+.veh-img span {
+    position: absolute;
+    font-size: 0.5vh;
+    font-family: def;
+    font-weight: 700;
+    color: #f8f8f8;
+
+    padding: 0.35vh 0.8vh;
+    border-radius: 0.20vh;
+    margin-bottom: 0.5vh;
+    background-color: rgb(232, 43, 68);
+    z-index: 1;
+}
+
+.veh-title {
+    position: relative;
+    margin-top: 2.5%;
+    font-size: 1.8vh;
+    font-family: def2;
+    color: #272626;
+}
+
+.veh-desc {
+    position: relative;
+    margin-top: 2.5%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    text-align: center;
+    font-size: 1.3vh;
+    font-family: def;
+    color: #272626;
+}
+
+.veh-vehs {
+    position: relative;
+    width: 100%;
+    margin-top: 2.5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.veh-vehs span {
+    position: relative;
+    margin: 0.75%;
+    font-size: 0.5vh;
+    font-family: def;
+    font-weight: 700;
+    color: #f8f8f8;
+
+    border-radius: 0.3vh;
+    padding: 0.2vh 0.6vh;
+    
+    background-color: #277dda;
+}
