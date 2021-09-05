@@ -1,0 +1,31 @@
+[
+    {
+        "image": "https://i.pinimg.com/originals/62/dd/7c/62dd7c974760932a5485f614c340ab85.png",
+        "imageType": "High End",
+        "imageTypeColor": "#e82b44",
+        "type": "high",
+        "title": "Package 1",
+        "description": "You should deliver this to a certain location.",
+        "vehicles" : ["Ford", "BMW", "Fiat"]
+    },
+
+    {
+        "image": "https://i.pinimg.com/originals/62/dd/7c/62dd7c974760932a5485f614c340ab85.png",
+        "imageType": "Low End",
+        "imageTypeColor": "#e8b511",
+        "type": "low",
+        "title": "Package 1",
+        "description": "You should deliver this to a certain location.",
+        "vehicles" : ["Ford", "BMW", "Fiat"]
+    },
+
+    {
+        "image": "https://i.pinimg.com/originals/62/dd/7c/62dd7c974760932a5485f614c340ab85.png",
+        "imageType": "Medium End",
+        "imageTypeColor": "#e8672b",
+        "type": "medium",
+        "title": "Package 1",
+        "description": "You should deliver this to a certain location.",
+        "vehicles" : ["Ford", "BMW", "Fiat"]
+    }
+]

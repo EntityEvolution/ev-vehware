@@ -140,6 +140,14 @@ select.arrows:focus {
     color: #272626;
 
     background-color: #90c43d;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.item-container button:hover {
+    transform: scale(1.1);
+
+    background-color: #90c43d;
 }
 
 .veh-img {
@@ -168,7 +176,7 @@ select.arrows:focus {
     padding: 0.35vh 0.8vh;
     border-radius: 0.20vh;
     margin-bottom: 0.5vh;
-    background-color: rgb(232, 43, 68);
+    background-color: #e82b44;
     z-index: 1;
 }
 
