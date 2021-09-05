@@ -1,5 +1,6 @@
 [
     {
+        "id": "1",
         "image": "https://i.pinimg.com/originals/62/dd/7c/62dd7c974760932a5485f614c340ab85.png",
         "imageType": "High End",
         "imageTypeColor": "#e82b44",
@@ -13,6 +14,7 @@
     },
 
     {
+        "id": "2",
         "image": "https://i.pinimg.com/originals/62/dd/7c/62dd7c974760932a5485f614c340ab85.png",
         "imageType": "Low End",
         "imageTypeColor": "#e8b511",
@@ -26,6 +28,7 @@
     },
 
     {
+        "id": "3",
         "image": "https://i.pinimg.com/originals/62/dd/7c/62dd7c974760932a5485f614c340ab85.png",
         "imageType": "Medium End",
         "imageTypeColor": "#e8672b",

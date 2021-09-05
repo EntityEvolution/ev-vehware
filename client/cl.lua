@@ -1,7 +1,7 @@
 local insidePoly, isOpen, inMission = false, false, false
 local maxZones, currentZones = 1, 0
 local dropZone = ""
-local currentVehicleList, currentCoordsList, currentAttached
+local currentVehicleList, currentCoordsList, currentAttached, currentId
 
 local vehicleBlip, truckBlip
 
@@ -15,6 +15,7 @@ RegisterNUICallback('getVehicleData', function(data, cb)
             createTruck(data.vehicles[math.random(1, tableLength(data.vehicles))]:lower(), data.coords)
             currentVehicleList = data.vehicles
             currentCoordsList = data.coords
+            currentId = data.id
             inMission = true
         end
     end
@@ -82,6 +83,8 @@ function createTruck(vehicle, coords)
     if DoesBlipExist(vehicleBlip) then RemoveBlip(vehicleBlip) end
     if DoesBlipExist(truckBlip) then RemoveBlip(truckBlip) end
     if currentZones == maxZones then
+        vehicleBlip = nil
+        truckBlip = nil
         currentZones = 0
         currentVehicleList = nil
         currentCoordsList = nil

@@ -64,6 +64,7 @@ function appendData(data) {
         vehDesc.classList.add('veh-desc');
         vehsCont.classList.add('veh-vehs');
 
+        mainItem.id = dataItem.id;
         imgVeh.src = dataItem.image;
         imgType.textContent = dataItem.imageType;
         imgType.style.backgroundColor = dataItem.imageTypeColor; 
@@ -83,7 +84,7 @@ function appendData(data) {
             mainItem.style.order = '1'
         }
         vehBtn.addEventListener('click', () => {
-            fetchNUI('getVehicleData', {type: dataItem.type, vehicles: dataItem.vehiclesSpawn, coords: dataItem.spawnLocation, maxZones: dataItem.maxVehicles})
+            fetchNUI('getVehicleData', {type: dataItem.type, vehicles: dataItem.vehiclesSpawn, coords: dataItem.spawnLocation, maxZones: dataItem.maxVehicles, id: dataItem.id})
         })
 
         imgCont.append(imgType, imgVeh);
