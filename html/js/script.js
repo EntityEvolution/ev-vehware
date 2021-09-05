@@ -83,7 +83,7 @@ function appendData(data) {
             mainItem.style.order = '1'
         }
         vehBtn.addEventListener('click', () => {
-            fetchNUI('getVehicleData', {type: dataItem.type, vehicles: dataItem.vehiclesSpawn, coords: dataItem.spawnLocation})
+            fetchNUI('getVehicleData', {type: dataItem.type, vehicles: dataItem.vehiclesSpawn, coords: dataItem.spawnLocation, maxZones: dataItem.maxVehicles})
         })
 
         imgCont.append(imgType, imgVeh);

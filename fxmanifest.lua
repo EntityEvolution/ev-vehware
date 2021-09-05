@@ -9,10 +9,10 @@ description 'A simple NUI vehicle warehouse created by Entity Evolution'
 version '1.0.0'
 
 client_scripts {
-    'config/config.lua',
     '@PolyZone/client.lua',
     '@PolyZone/CircleZone.lua',
 	'@PolyZone/ComboZone.lua',
+    'config/config.lua',
     'client/*.lua'
 }
 

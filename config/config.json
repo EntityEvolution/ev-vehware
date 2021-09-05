@@ -8,7 +8,8 @@
         "description": "You should deliver this to a certain location.",
         "vehicles": ["Adder", "Zentorno", "T20"],
         "vehiclesSpawn": ["Adder", "zentorno", "T20"],
-        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0]
+        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0],
+        "maxVehicles": 3
     },
 
     {
@@ -20,7 +21,8 @@
         "description": "You should deliver this to a certain location.",
         "vehicles": ["Adder", "Zentorno", "T20"],
         "vehiclesSpawn": ["Adder", "zentorno", "T20"],
-        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0]
+        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0],
+        "maxVehicles": 1
     },
 
     {
@@ -32,6 +34,7 @@
         "description": "You should deliver this to a certain location.",
         "vehicles": ["Adder", "Zentorno", "T20"],
         "vehiclesSpawn": ["Adder", "zentorno", "T20"],
-        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0]
+        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0],
+        "maxVehicles": 2
     }
 ]
