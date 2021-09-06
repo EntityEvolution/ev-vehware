@@ -1,7 +1,7 @@
 local insidePoly, isOpen, inMission = false, false, false
 local maxZones, currentZones = 1, 0
 local dropZone = ""
-local currentVehicleList, currentCoordsList, currentAttached, currentId
+local currentVehicleList, currentCoordsList, currentAttached, currentId, currentPayout
 
 local vehicleBlip, truckBlip
 
@@ -16,10 +16,20 @@ RegisterNUICallback('getVehicleData', function(data, cb)
             currentVehicleList = data.vehicles
             currentCoordsList = data.coords
             currentId = data.id
+            currentPayout = data.m
             inMission = true
+            TriggerServerEvent('ev:updateWarehouseStatus', currentId)
+            --Trigger Police Event?
         end
     end
     cb({})
+end)
+
+RegisterNetEvent('ev:updateWarehouseStatus', function(id)
+    SendNUIMessage({
+        action = 'update',
+        id = id
+    })
 end)
 
 ---Shows a floating notification above ped
@@ -47,7 +57,7 @@ function showNoti(ped, type, message)
                             SetNuiFocus(isOpen, isOpen)
                             SendNUIMessage({action = 'show'})
                         else
-                            print('Your already doing a mission')
+                            displayNoti('You are already doing a mission')
                         end
                         break
                     elseif type == "delete" then
@@ -61,10 +71,10 @@ function showNoti(ped, type, message)
                                 createTruck(currentVehicleList[math.random(1, tableLength(currentVehicleList))]:lower(), currentCoordsList)
                                 break
                             else
-                                print('Seems like you dropped your vehicle somewhere')
+                                displayNoti('Seems like you dropped your vehicle somewhere')
                             end
                         else
-                            print('You cannot do the mission with that vehicle')
+                            displayNoti('You cannot do the mission with that vehicle')
                         end
                     end
                 end
@@ -83,26 +93,39 @@ function createTruck(vehicle, coords)
     if DoesBlipExist(vehicleBlip) then RemoveBlip(vehicleBlip) end
     if DoesBlipExist(truckBlip) then RemoveBlip(truckBlip) end
     if currentZones == maxZones then
+        TriggerServerEvent('ev:updateWarehouseStatus', currentId)
+        --TriggerServerEvent('eventname', currentPayout) --Trigger event for giving money. I would recommend adding some kind of check. Maybe statebags related to player.
+        currentPayout = nil
         vehicleBlip = nil
         truckBlip = nil
+        currentId = nil
         currentZones = 0
         currentVehicleList = nil
         currentCoordsList = nil
         inMission = false
-        return print('done with warehouse')
+        return displayNoti('Finished all dropoffs')
     end
     local modelHash = GetHashKey(vehicle)
     local truckModel = GetHashKey('flatbed')
-    if not IsModelInCdimage(modelHash) then return print(vehicle .. ' does not exist') end
-
+    if not IsModelInCdimage(modelHash) then return displayNoti(vehicle .. ' does not exist') end
     RequestModel(modelHash)
     RequestModel(truckModel)
     while not HasModelLoaded(modelHash) and not HasModelLoaded(truckModel) do
         Wait(15)
     end
-    local truck = CreateVehicle(truckModel, vector4(coords[1], coords[2], coords[3], coords[4]), true, false)
     local targetVehicle = CreateVehicle(modelHash, vector4(coords[1], coords[2], coords[3] + 1, coords[4]), true, false)
+    local truck = CreateVehicle(truckModel, vector4(coords[1], coords[2], coords[3] + 1, coords[4]), true, false)
+    local id = NetworkGetNetworkIdFromEntity(truck)
+    SetNetworkIdExistsOnAllMachines(id, true)
+    SetNetworkIdCanMigrate(id, true)
+    SetVehicleOnGroundProperly(truck)
+    SetVehicleHasBeenOwnedByPlayer(truck, true)
     SetVehicleDoorsLocked(targetVehicle, 4)
+    RequestCollisionAtCoord(vector3(coords[1], coords[2], coords[3]))
+    while not HasCollisionLoadedAroundEntity(truck) do
+        print('load')
+        Wait(15)
+    end
     AttachEntityToEntity(targetVehicle, truck, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
     currentAttached = targetVehicle
     -- Blip for truck
@@ -127,6 +150,16 @@ function createTruck(vehicle, coords)
     BeginTextCommandSetBlipName('STRING')
     AddTextComponentSubstringPlayerName(Config.Vehicle.BlipText)
     EndTextCommandSetBlipName(vehicleBlip)
+end
+
+---Returns a gta styled notification if not Config.Debug
+---@param message string
+---@return string
+function displayNoti(message)
+    if Config.Debug then return print(message) end
+    SetNotificationTextEntry('STRING')
+    AddTextComponentString(message)
+    DrawNotification(0, 1)
 end
 
 ---Returns the 

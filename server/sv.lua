@@ -1,3 +1,3 @@
-RegisterNetEvent('ev:updateWarehouseStatus', function()
-    TriggerEvent('ev:updateWarehouseStatus', -1)
+RegisterNetEvent('ev:updateWarehouseStatus', function(id)
+    TriggerClientEvent('ev:updateWarehouseStatus', -1, id)
 end)

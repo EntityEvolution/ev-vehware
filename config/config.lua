@@ -42,3 +42,5 @@ Config.DropZones = {
     {coords = vec3(1902.17, 4919.125, 48.78), name = "barnZone"},
     {coords = vec3(2686.79, 2764.79, 37.87), name = "constructionZone"}
 }
+
+Config.Debug = false

@@ -11,6 +11,15 @@ window.addEventListener('load', () => {
             case 'hide':
                 wrapper.style.display = 'none';
             break;
+
+            case 'update':
+                let currentStyle = window.getComputedStyle(document.getElementById(e.data.id)).display
+                if (currentStyle == 'flex') {
+                    doc.getElementById(e.data.id).style.display = 'none';
+                } else {
+                    doc.getElementById(e.data.id).style.display = 'flex';
+                }
+            break;
         }
     });
 
@@ -84,7 +93,7 @@ function appendData(data) {
             mainItem.style.order = '1'
         }
         vehBtn.addEventListener('click', () => {
-            fetchNUI('getVehicleData', {type: dataItem.type, vehicles: dataItem.vehiclesSpawn, coords: dataItem.spawnLocation, maxZones: dataItem.maxVehicles, id: dataItem.id})
+            fetchNUI('getVehicleData', {type: dataItem.type, vehicles: dataItem.vehiclesSpawn, coords: dataItem.spawnLocation, maxZones: dataItem.maxVehicles, id: dataItem.id, m: dataItem.payout})
         })
 
         imgCont.append(imgType, imgVeh);
