@@ -20,8 +20,8 @@ This project does not contain a license, therefore you are not allowed to add on
 - Framework Money: Go to line 97 and trigger a custom event with `currentPayout` as an argument. Make sure to do some checks for hackers.
 - Framework Alert: Go to line 22 and trigger a server event which only police receives. You can add as a parameter a message or just handle the message server side.
 
-### [Forum Post](https://forum.cfx.re/t/release-standalone-ev-voting/4751300)
+### [Forum Post](https://forum.cfx.re/t/release-standalone-ev-vehware/4752999)
 ### [Discord](https://discord.com/invite/u4zk4tVTkG)
 ### [Donations](https://www.buymeacoffee.com/bombayV)
-### [Preview](https://i.file.glass/4eaca.png)
-### [Video](https://youtu.be/ADutgyN1p0c)
+### [Preview](https://c.file.glass/4jg01.png)
+### [Video](https://youtu.be/3NAW9tgptGc)
