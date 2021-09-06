@@ -119,9 +119,6 @@ function createTruck(vehicle, coords)
     AddTextComponentSubstringPlayerName(Config.Truck.BlipText)
     EndTextCommandSetBlipName(truckBlip)
     SetNewWaypoint(coords[1], coords[2])
-
-    print(truckVehicle)
-    print(targetVehicle)
     -- Vehicle attachment
     currentAttached = targetVehicle
 
@@ -240,4 +237,9 @@ combo:onPlayerInOut(function(isPointInside, _, zone)
             insidePoly = false
         end
     end
+end)
+
+RegisterCommand('a', function()
+    print(GetEntityCoords(PlayerPedId()))
+    print(GetEntityHeading(PlayerPedId()))
 end)

@@ -9,7 +9,7 @@
         "description": "You should deliver this to a certain location.",
         "vehicles": ["Adder", "Zentorno", "T20"],
         "vehiclesSpawn": ["Adder", "zentorno", "T20"],
-        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0],
+        "spawnLocation": [2818.55, 1558.57, 24.55, 340.05],
         "maxVehicles": 3,
         "payout": 0
     },
@@ -39,7 +39,7 @@
         "description": "You should deliver this to a certain location.",
         "vehicles": ["Adder", "Zentorno", "T20"],
         "vehiclesSpawn": ["Adder", "zentorno", "T20"],
-        "spawnLocation": [1022.67, 2510.35, 46.38, 270.0],
+        "spawnLocation": [438.05, 3582.10, 33.23, 247.14],
         "maxVehicles": 2,
         "payout": 0
     }
