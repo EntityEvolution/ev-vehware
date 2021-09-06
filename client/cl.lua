@@ -226,9 +226,11 @@ combo:onPlayerInOut(function(isPointInside, _, zone)
     if isPointInside then
         if zone then
             if zone.name == dropZone then
-                if not insidePoly then
-                    insidePoly = true
-                    showNoti(PlayerPedId(), 'delete', Config.deleteText)
+                if IsVehicleModel(GetVehiclePedIsIn(PlayerPedId(), false), GetHashKey('flatbed')) then
+                    if not insidePoly then
+                        insidePoly = true
+                        showNoti(PlayerPedId(), 'delete', Config.deleteText)
+                    end
                 end
             end
         end
