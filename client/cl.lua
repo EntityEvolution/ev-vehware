@@ -105,31 +105,12 @@ function createTruck(vehicle, coords)
         inMission = false
         return displayNoti('Finished all dropoffs')
     end
-    local modelHash = GetHashKey(vehicle)
-    local truckModel = GetHashKey('flatbed')
-    if not IsModelInCdimage(modelHash) then return displayNoti(vehicle .. ' does not exist') end
-    RequestModel(modelHash)
-    RequestModel(truckModel)
-    while not HasModelLoaded(modelHash) and not HasModelLoaded(truckModel) do
-        Wait(15)
-    end
-    local targetVehicle = CreateVehicle(modelHash, vector4(coords[1], coords[2], coords[3] + 1, coords[4]), true, false)
-    local truck = CreateVehicle(truckModel, vector4(coords[1], coords[2], coords[3] + 1, coords[4]), true, false)
-    local id = NetworkGetNetworkIdFromEntity(truck)
-    SetNetworkIdExistsOnAllMachines(id, true)
-    SetNetworkIdCanMigrate(id, true)
-    SetVehicleOnGroundProperly(truck)
-    SetVehicleHasBeenOwnedByPlayer(truck, true)
-    SetVehicleDoorsLocked(targetVehicle, 4)
-    RequestCollisionAtCoord(vector3(coords[1], coords[2], coords[3]))
-    while not HasCollisionLoadedAroundEntity(truck) do
-        print('load')
-        Wait(15)
-    end
-    AttachEntityToEntity(targetVehicle, truck, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
-    currentAttached = targetVehicle
+    if not IsModelInCdimage(GetHashKey(vehicle)) then return displayNoti(vehicle .. ' does not exist') end
+
     -- Blip for truck
-    truckBlip = AddBlipForEntity(truck)
+    local truckVehicle = spawnCar('flatbed', vector3(coords[1], coords[2], coords[3]), coords[4])
+    local targetVehicle = spawnCar(vehicle, vector3(coords[1], coords[2], coords[3] + 5), coords[4])
+    truckBlip = AddBlipForEntity(truckVehicle)
     SetBlipSprite(truckBlip, Config.Truck.BlipSprite)
     SetBlipScale(truckBlip, Config.Truck.BlipScale)
     SetBlipColour(truckBlip, Config.Truck.BlipColor)
@@ -138,6 +119,11 @@ function createTruck(vehicle, coords)
     AddTextComponentSubstringPlayerName(Config.Truck.BlipText)
     EndTextCommandSetBlipName(truckBlip)
     SetNewWaypoint(coords[1], coords[2])
+
+    print(truckVehicle)
+    print(targetVehicle)
+    -- Vehicle attachment
+    currentAttached = targetVehicle
 
     -- Blip for giving car
     local randomPlace = math.random(1, tableLength(Config.DropZones))
@@ -150,6 +136,38 @@ function createTruck(vehicle, coords)
     BeginTextCommandSetBlipName('STRING')
     AddTextComponentSubstringPlayerName(Config.Vehicle.BlipText)
     EndTextCommandSetBlipName(vehicleBlip)
+
+    -- Attach to entity
+    AttachEntityToEntity(targetVehicle, truckVehicle, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
+    if GetEntityAttachedTo(targetVehicle) ~= truckVehicle then
+        repeat AttachEntityToEntity(targetVehicle, truckVehicle, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
+            Wait(500)
+        until GetEntityAttachedTo(targetVehicle) == truckVehicle
+    end
+end
+
+function spawnCar(car, coords, heading)
+    local model = (type(car) == 'number' and car or GetHashKey(car))
+    RequestModel(model)
+    while not HasModelLoaded(model) do
+        Wait(0)
+    end
+
+    local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, false)
+    local id = NetworkGetNetworkIdFromEntity(vehicle)
+
+    SetNetworkIdCanMigrate(id, true)
+    SetEntityAsMissionEntity(vehicle, true, true)
+    SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+    SetVehicleNeedsToBeHotwired(vehicle, false)
+    SetModelAsNoLongerNeeded(model)
+
+    RequestCollisionAtCoord(coords.x, coords.y, coords.z)
+    while not HasCollisionLoadedAroundEntity(vehicle) do
+        RequestCollisionAtCoord(coords.x, coords.y, coords.z)
+        Wait(0)
+    end
+    return vehicle
 end
 
 ---Returns a gta styled notification if not Config.Debug
