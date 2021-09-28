@@ -240,8 +240,3 @@ combo:onPlayerInOut(function(isPointInside, _, zone)
         end
     end
 end)
-
-RegisterCommand('a', function()
-    print(GetEntityCoords(PlayerPedId()))
-    print(GetEntityHeading(PlayerPedId()))
-end)
