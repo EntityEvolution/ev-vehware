@@ -38,7 +38,7 @@ function showNoti(ped, type, message)
     ---Returns a floating notification on coords
     ---@param message string
     ---@param coords number
-    local function showFloatingNotification(message, coords)
+    local function showFloatingNotification(coords)
         AddTextEntry('warehouseNoti', message)
         SetFloatingHelpTextWorldPosition(1, coords)
         SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
@@ -49,7 +49,7 @@ function showNoti(ped, type, message)
         CreateThread(function()
             while insidePoly do
                 local coords = GetEntityCoords(ped)
-                showFloatingNotification(message, vec3(coords.x, coords.y, coords.z + 1))
+                showFloatingNotification(vec3(coords.x, coords.y, coords.z + 1))
                 if IsControlJustPressed(0, Config.openKey) then
                     if type == "warehouse" then
                         if not inMission then
